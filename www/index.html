@@ -6,14 +6,18 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <!--link rel="stylesheet" type="text/css" href="css/index.css"-->
+        <link rel="stylesheet" type="text/css" href="css/app.css">
         <title>Hello World</title>
         <script src="js/libs/jquery.js"></script>
     </head>
     <body>
-        Hello!<br>
-        <button id="selectPhoto">スクリーンショットを選択</button><br><br>
+        <div class="u">
+            ScreenShotBrowser<br>
+            <button id="selectPhoto">スクリーンショットを選択</button>
+            <button id="getSuggestUrls">検索</button>
+        </div>
 
-        <img src="#" id="screenshot">
+        <img src="#" id="screenshot" data-base64img="">
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/ScreenShotBrowser-compiled.js"></script>
         <script type="text/javascript" src="js/app-compiled.js"></script>
