@@ -1,7 +1,7 @@
 class ScreenShotBrowser {
     constructor() {
         this.APP_NAME = "android-jp.daiiz.screenshotbrowser";
-        this.PROJECT_URL = 'https://daiiz-apps.appspot.com';
+        this.PROJECT_URL = 'https://74ga-dot-daiiz-apps.appspot.com';
         // daiiz-appsを介して通信する
         this.API_CLOUD_VISION = `${ this.PROJECT_URL }/proxy/goog-cloud-vision`;
         this.API_GOOG_SEARCH = `${ this.PROJECT_URL }/proxy/goog-web-search`;
@@ -24,6 +24,7 @@ class ScreenShotBrowser {
      * スクリーンショット画像を送信してウェブページを検索
      */
     sendSearchRequest(base64img) {
+        alert(85);
         this.callCloudVisionAPI(base64img, null);
     }
 
@@ -37,11 +38,17 @@ class ScreenShotBrowser {
             data: JSON.stringify({
                 base64img: base64img,
                 app_name: self.APP_NAME,
-                pass_code: "uji65ikjpolq"
+                pass_code: "uji65ikjpolqjdajldsao897"
             })
         }).success(data => {
-            alert(data);
+            var textAnnotation = data.responses[0].textAnnotations[0];
+            // descriptionsの最初の要素に，解析された全文が格納されている
+            var description = textAnnotation.description;
+            description = description.replace('\n', ' ');
+            alert(description);
             if (callback !== null) callback();
+        }).fail(msg => {
+            alert("???" + JSON.stringify(msg));
         });
     }
 }
