@@ -14,11 +14,29 @@
     <body>
         <div class="u">
             ScreenShotBrowser<br>
-            <button id="selectPhoto">スクリーンショットを選択</button>
-            <button id="getSuggestUrls">検索</button>
+            <button id="selectPhoto">1. スクリーンショットを選ぶ</button>
+            <button id="getSuggestUrls">2. OCR</button>
+            <!--button id="make-url"-->3. キーワードを選ぶ（最大5個）<!--/button-->
         </div>
+        <div id="u-panel">
+            ここにキーワードの候補が表示されます
+            <div id="ul-tag">
+            </div>
+        </div>
+        <br>
+        <center>
+            <a href="#" id="a-tag" target="_blank">4. Googleで検索</a>
+        </center>
+        <br>
 
         <img src="#" id="screenshot" data-base64img="">
+        <br>
+        <br>
+        <center>
+            制作: @daizplus
+        </center>
+        <br>
+        <br>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/ScreenShotBrowser-compiled.js"></script>
         <script type="text/javascript" src="js/app-compiled.js"></script>

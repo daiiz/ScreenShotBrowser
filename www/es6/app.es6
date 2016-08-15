@@ -22,4 +22,19 @@ $(function () {
             ssb.sendSearchRequest(base64img);
         }
     });
+
+    $('#ul-tag').on('change', 'input.ch', e => {
+        var ks = '';
+        var $a = $('#a-tag');
+        var v = 0;
+        $('input.ch').each(function () {
+            var $ch = $(this);
+            if ($ch[0].checked && v < 5) {
+                ks += $ch.val();
+                v += 1;
+            }
+        });
+        var g = 'https://www.google.co.jp/#q=';
+        $a.attr('href', g + ks);
+    });
 });

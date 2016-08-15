@@ -1,10 +1,11 @@
 class ScreenShotBrowser {
     constructor() {
         this.APP_NAME = "android-jp.daiiz.screenshotbrowser";
-        this.PROJECT_URL = 'https://74ga-dot-daiiz-apps.appspot.com';
+        this.PROJECT_URL = 'https://75ga-dot-daiiz-apps.appspot.com';
         // daiiz-appsを介して通信する
         this.API_CLOUD_VISION = `${ this.PROJECT_URL }/proxy/goog-cloud-vision`;
         this.API_GOOG_SEARCH = `${ this.PROJECT_URL }/proxy/goog-web-search`;
+        this.progress = false;
     }
 
     /**
@@ -24,11 +25,23 @@ class ScreenShotBrowser {
      * スクリーンショット画像を送信してウェブページを検索
      */
     sendSearchRequest(base64img) {
-        alert(85);
-        this.callCloudVisionAPI(base64img, null);
+        alert('しばらくこのままでお待ち下さい。完了したらお知らせします。');
+        this.callCloudVisionAPI(base64img);
     }
 
-    callCloudVisionAPI(base64img, callback = null) {
+    showKeywordsPanel(keywords = []) {
+        var $ul = $('#ul-tag');
+        $ul[0].innerHTML = '';
+        for (var i = 0; i < keywords.length; i++) {
+            var k = keywords[i].substring(0, 64);
+            if (k.length > 2) {
+                var $li = $(`<div class="se"><input type="checkbox" value="${ k }" class="ch"> ${ k }</div>`);
+                $ul.append($li);
+            }
+        }
+    }
+
+    callCloudVisionAPI(base64img) {
         var self = this;
         $.ajax({
             url: self.API_CLOUD_VISION,
@@ -44,9 +57,9 @@ class ScreenShotBrowser {
             var textAnnotation = data.responses[0].textAnnotations[0];
             // descriptionsの最初の要素に，解析された全文が格納されている
             var description = textAnnotation.description;
-            description = description.replace('\n', ' ');
-            alert(description);
-            if (callback !== null) callback();
+            var keywords = description.split('\n');
+            alert('読み取りが完了しました。キーワードを選択して検索できます。');
+            self.showKeywordsPanel(keywords);
         }).fail(msg => {
             alert("???" + JSON.stringify(msg));
         });
