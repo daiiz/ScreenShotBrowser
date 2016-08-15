@@ -12,10 +12,12 @@ class ScreenShotBrowser {
      * フォトアルバムからスクリーンショット画像を選択されたとき
      */
     selectScreenShotFromAlbum(base64img = "") {
+        var $ul = $('#ul-tag');
+        $ul[0].innerHTML = '';
         var $photoArea = $('#screenshot');
         if (base64img.length === 0) return;
         $photoArea.css({
-            width: window.innerWidth
+            width: window.innerWidth - 16
         });
         $photoArea.attr('data-base64img', base64img);
         $photoArea.attr('src', "data:image/jpeg;base64," + base64img);
@@ -25,13 +27,17 @@ class ScreenShotBrowser {
      * スクリーンショット画像を送信してウェブページを検索
      */
     sendSearchRequest(base64img) {
-        alert('しばらくこのままでお待ち下さい。完了したらお知らせします。');
-        this.callCloudVisionAPI(base64img);
+        if (!this.progress) {
+            alert('しばらくこのままでお待ち下さい。完了したらお知らせします。');
+            this.progress = true;
+            this.callCloudVisionAPI(base64img);
+        } else {
+            alert('現在処理中です。お待ち下さい。');
+        }
     }
 
     showKeywordsPanel(keywords = []) {
         var $ul = $('#ul-tag');
-        $ul[0].innerHTML = '';
         for (var i = 0; i < keywords.length; i++) {
             var k = keywords[i].substring(0, 64);
             if (k.length > 2) {
@@ -39,6 +45,7 @@ class ScreenShotBrowser {
                 $ul.append($li);
             }
         }
+        this.progress = false;
     }
 
     callCloudVisionAPI(base64img) {
