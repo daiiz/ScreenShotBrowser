@@ -1,6 +1,5 @@
-var ssb;
 $(function () {
-    ssb = new ScreenShotBrowser();
+    var ssb = new ScreenShotBrowser();
 
     // スクリーンショット写真を選択する
     $('#selectPhoto').on('click', e => {
