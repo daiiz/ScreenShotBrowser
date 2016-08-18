@@ -1,0 +1,58 @@
+
+ScreenShot Browser for Android
+
+Coming Soon!!
+
+スマートフォンで撮影されたウェブページのスクリーンショットを用いて、写っているウェブページを検索するアプリです。
+このアプリを使えば、
+- Twitterでシェアされた記事のスクリーンショット
+- メモとしてスクショしておいたニュース記事
+- LINEで送られてきたAmazonの商品ページのスクリーンショット
+など、URLがわからないページをさっと見つけることができます！
+
+■■ 使い方 ■■
+
+
+1. アプリを起動
+
+"[*1]"
+"[*2]"
+
+2. スクリーンショット写真を選択
+
+"[*3]"
+"[*4]"
+
+3. OCR!
+
+"Google Cloud Vision API(*21)"のTextAnnotationを使用しています。
+ボタン「ステップ2」を押した後は少々時間がかかりますのでお待ち下さい。
+"[*5]"
+"[*6]"
+
+4. 検索に使うキーワードを選ぶ
+
+最大で5個までのキーワードを選択できます。
+探しているページの特徴をよく表しているキーワードを選んでみてください。
+"[*7]"
+"[*8]"
+
+5. 検索
+
+「検索する」を押して検索しましょう。
+"[*9]"
+"[*10]"
+
+by "@daizplus(*20)" (2016/08/16)
+*1: https://storage.googleapis.com/daiiz-appspot/ssb/1.png
+*2: https://storage.googleapis.com/daiiz-appspot/ssb/2.png
+*3: https://storage.googleapis.com/daiiz-appspot/ssb/3.png
+*4: https://storage.googleapis.com/daiiz-appspot/ssb/4.png
+*5: https://storage.googleapis.com/daiiz-appspot/ssb/5.png
+*6: https://storage.googleapis.com/daiiz-appspot/ssb/6.png
+*7: https://storage.googleapis.com/daiiz-appspot/ssb/7.png
+*8: https://storage.googleapis.com/daiiz-appspot/ssb/8.png
+*9: https://storage.googleapis.com/daiiz-appspot/ssb/9.png
+*10: https://storage.googleapis.com/daiiz-appspot/ssb/10.png
+*20: https://twitter.com/daizplus
+*21: https://cloud.google.com/vision/reference/rest/?hl=ja
