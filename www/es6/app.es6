@@ -29,7 +29,7 @@ $(function () {
         $('input.ch').each(function () {
             var $ch = $(this);
             if ($ch[0].checked && v < 5) {
-                ks += $ch.val();
+                ks += $ch.val() + ' ';
                 v += 1;
             }
         });
