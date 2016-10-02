@@ -1,7 +1,7 @@
 # [ScreenShotBrowser](https://daiz713.github.io/ScreenShotBrowser/)
 
 - Set app private keys
-Save file `js/keys.js`.
+Save file `www/js/keys.js`.
 ```
 var private_keys = {
     // Google Cloud Vision API キー
@@ -10,7 +10,7 @@ var private_keys = {
 ```
 
 - Install and setup [Cordova](https://cordova.apache.org/)
-
+- Launch app
 ```
 $ cordova run android
 ```
