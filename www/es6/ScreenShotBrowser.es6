@@ -2,7 +2,7 @@ class ScreenShotBrowser {
     constructor () {
         this.APP_NAME = private_keys.APP_NAME;
         this.PROJECT_URL = private_keys.PROJECT_URL;
-        this.API_CLOUD_VISION = `${this.PROJECT_URL}/proxy/goog-cloud-vision-text-detection`;
+        this.API_CLOUD_VISION = 'https://vision.googleapis.com/v1/images:annotate?key=';
         this.progress = false;
     }
 
@@ -49,14 +49,20 @@ class ScreenShotBrowser {
     callCloudVisionAPI (base64img) {
         var self = this;
         $.ajax({
-            url: self.API_CLOUD_VISION,
+            url: self.API_CLOUD_VISION + private_keys.API_KEY_CLOUD_VISION,
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({
-                base64img: base64img,
-                app_name: self.APP_NAME,
-                pass_code: private_keys.PASSCODE_CLOUD_VISION
+                'requests': [{
+                    'image': {
+                        'content': base64img
+                    },
+                    'features': [{
+                        'type': 'TEXT_DETECTION',
+                        'maxResults': 10
+                    }]
+                }]
             })
         }).success(data => {
             var textAnnotation = data.responses[0].textAnnotations[0];
