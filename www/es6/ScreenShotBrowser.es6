@@ -1,7 +1,5 @@
 class ScreenShotBrowser {
     constructor () {
-        this.APP_NAME = private_keys.APP_NAME;
-        this.PROJECT_URL = private_keys.PROJECT_URL;
         this.API_CLOUD_VISION = 'https://vision.googleapis.com/v1/images:annotate?key=';
         this.progress = false;
     }
